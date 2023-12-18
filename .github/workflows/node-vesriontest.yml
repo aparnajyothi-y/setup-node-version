@@ -4,7 +4,7 @@ on:
 
 jobs:
   version-file-volta:
-    name: Setup-node npm (Node ${{ matrix.node-version}}, ${{ matrix.os }})
+    name: Setup-node npm (Node ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -17,8 +17,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
            node-version-file: e2e/package.json
-           cache: 'npm'
-           cache-dependency-path: 'README.md'
-           check-latest: true
+          
       - name: Install dependencies
         run: npm install express@latest axios@latest
