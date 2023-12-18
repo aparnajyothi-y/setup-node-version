@@ -4,7 +4,6 @@ on:
 
 jobs:
   version-file-volta:
-    name: Setup-node npm (Node ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
