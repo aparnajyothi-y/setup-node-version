@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  node-versioning-file:
+  version-file-volta:
     name: Setup-node npm (Node ${{ matrix.node-version}}, ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
