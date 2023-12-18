@@ -1,0 +1,25 @@
+name: cache
+
+on:
+  workflow_dispatch:
+
+jobs:
+  node-versioning-file:
+    name: Setup-node npm (Node ${{ matrix.node-version}}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+      - uses: actions/setup-node@v4
+        with:
+           node-version-file: e2e/package.json
+           cache: 'npm'
+           cache-dependency-path: 'README.md'
+           check-latest: true
+      - name: Install dependencies
+        run: npm install express@latest axios@latest
